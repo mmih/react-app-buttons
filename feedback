@@ -1,0 +1,21 @@
+Hi Milko,
+
+Job done 👍, I really like the way you've combine boolean variables and components, it is written with best practice! Excellent!
+
+The only thing that I can see that can be improved is the way you invoke the function.
+As the way you did it, everytime you create new function and after execution it is destroyed, which can lead to performance issue in large app.
+I can suggest you to call the function and base on the data-attributes to choose what to place.
+
+See this example:
+
+    changeImage(event) {
+        this.setState({imageUrl: event.target.getAttribute('data-image-url')})
+    }
+    
+    <Button name="Image One" imageChangeHandler={this.changeImage} imageUrl="https://img.rasset.ie/0010809f-500.jpg"/>
+    
+    const Button = ({ name, imageChangeHandler, imageUrl }) => {
+      return (
+          <button onClick={imageChangeHandler} data-image-url={imageUrl}>{name}</button>
+      )
+    }
