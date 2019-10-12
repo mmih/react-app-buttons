@@ -8,9 +8,13 @@ const imagesPath = {
   image2: "https://cdn.vox-cdn.com/thumbor/k1glTKnIA3UDnu-WWypOMa8MWBs=/0x0:2040x1360/1200x800/filters:focal(857x517:1183x843)/cdn.vox-cdn.com/uploads/chorus_image/image/65113845/acastro_180130_1777_0005_v2.0.jpg",
   image3: "https://cdn.vox-cdn.com/thumbor/9ATCtNIpKr8gsh8rDV-ITtw5UU0=/0x0:1280x800/1200x800/filters:focal(538x298:742x502)/cdn.vox-cdn.com/uploads/chorus_image/image/65135377/Untitled.0.png",
   image4: "https://cnet2.cbsistatic.com/img/3O04FaNVeXyoVOdZXsc9KellXCo=/868x488/2018/11/01/34d19592-cc28-46ff-a36a-d427c40e06bb/008-ipad-pro-2018.jpg",
-  image5: "https://static.bhphoto.com/images/images2000x2000/1559148656_1480943.jpg"
 }
 
+const switchStyle = {
+  zIndex: 200,
+  position: 'relative',
+  cursor: 'pointer'
+}
 
 class App extends Component {
 
@@ -19,42 +23,40 @@ class App extends Component {
 
     this.state = {
       src: imagesPath['image1'],
-      opened: false,
+      darkened: false
     };
 
-    this.toggleButtons = this.toggleButtons.bind(this);
+    this.showTheDarkSide = this.showTheDarkSide.bind(this);
 
   }
 
-  toggleButtons() {
-    const { opened } = this.state;
+  showTheDarkSide(){
+    const { darkened } = this.state;
 
     this.setState({
-      opened: !this.state.opened,
+      darkened: !this.state.darkened,
     });
   }
-
 
   render() {
     return (
       <div className="App">
-        <div className="App-header">
-          <img src={this.state.src} className="App-logo" alt="logo" />
+        <header>
+          <h2>Three Ezee steps to everything you need in a wallet</h2>
+        </header>
+        <div className="desktop" style={{zIndex: this.state.darkened ? 200 : 0}}>
+          <img src={this.state.src} className="background" alt="logo" />
         </div>
-        <div>
-            <Button name="Image 1" src={()=>this.setState({src: imagesPath['image1']})}/>
-            <Button name="Image 2" src={()=>this.setState({src: imagesPath['image2']})}/>
-            <Button name="Image 3" src={()=>this.setState({src: imagesPath['image3']})} />
-            {this.state.opened && (
-              <div className="boxContent">
-                <Button name="Image 4" src={()=>this.setState({src: imagesPath['image4']})} />
-                <Button name="Image 5" src={()=>this.setState({src: imagesPath['image5']})} />
-              </div>
-            )}
-
-            {!this.state.opened && (<MoreButton name="Add" show={()=>this.toggleButtons()}/>)}
-
+        {this.state.darkened && (<div className='curtain'></div>)}
+        <div className='buttonsContainer'>
+          <Button number ='2' text='Easy to use' src={()=>this.setState({src: imagesPath['image1']})}/>
+          <Button number ='1' text='Lorem ipsum' src={()=>this.setState({src: imagesPath['image2']})}/>
+          <Button number ='4' text='Lorem ipsum' src={()=>this.setState({src: imagesPath['image3']})} />
+          <Button number ='3' text='Lorem ipsum' src={()=>this.setState({src: imagesPath['image4']})} />
+          <div className="buttonContainer">
+            <img className='switch' style={switchStyle} src="/images/light-switch.png" onClick={this.showTheDarkSide}/>
           </div>
+        </div>
       </div>
     );
   }
