@@ -1,8 +1,11 @@
 import React from 'react'
 
-export const Button = ({ name, src }) => {
+export const Button = ({ src, number, text }) => {
 
   return(
-    <button onClick={src} className='myButton'>{name}</button>
+    <div className='buttonContainer' onClick={src}>
+      <div className='circle'>{number}</div>
+      <span className='text'>{text}</span>
+    </div>
   )
 }

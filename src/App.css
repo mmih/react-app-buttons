@@ -1,18 +1,88 @@
 .App {
   text-align: center;
+  background-color: #28323D;
 }
 
-.App-header {
+h2{
+  font-size: 35px;
+  color: #fff;
+  text-align: center;
+  margin-bottom: 50px;
+  margin-block-start: 0;
+  margin-block-end: 0;
+}
+
+.desktop {
   background-color: #222;
   height: 150px;
   padding: 20px;
   color: white;
+  background: url('/images/imac.png') no-repeat;
+  background-position: center;
+  height: 500px;
+  /*z-index: 200;*/
+  position: relative;
 }
 
-.App-logo {
+.background {
   max-width: 100%;
+  width: 515px;
+  padding-top: 45px;
+  height: 300px;
 }
 
+.buttonsContainer{
+  position: absolute;
+  top: 100px;
+  height: 50px;
+  padding: 10px 10px;
+  width: 100%;
+}
+
+.circle {
+  border-radius: 50%;
+  width: 20px;
+  height: 20px;
+  padding: 8px;
+  border: 1px solid #666;
+  color: #666;
+  text-align: center;
+  font: 20px Arial, sans-serif;
+  display: inline-block;
+  margin-right: 10px;
+}
+
+.buttonContainer{
+  width:20%;
+  height: 150px;
+  cursor: pointer;
+  color: #666;
+}
+
+.buttonContainer:hover .circle{
+  color: #aaa;
+  background: #5CABDE;
+}
+
+.buttonContainer:hover .text{
+  color: #aaa;
+}
+
+.buttonContainer:nth-child(odd){
+  float:right;
+}
+
+.curtain {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background: black;
+  opacity: 0.5;
+  z-index: 100;
+  display:block;
+}
 
 .App-intro {
   font-size: large;
@@ -21,40 +91,4 @@
 @keyframes App-logo-spin {
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
-}
-
-.myButton {
-  -moz-box-shadow:inset 0px 0px 15px 3px #23395e;
-  -webkit-box-shadow:inset 0px 0px 15px 3px #23395e;
-  box-shadow:inset 0px 0px 15px 3px #23395e;
-  background:-webkit-gradient(linear, left top, left bottom, color-stop(0.05, #2e466e), color-stop(1, #415989));
-  background:-moz-linear-gradient(top, #2e466e 5%, #415989 100%);
-  background:-webkit-linear-gradient(top, #2e466e 5%, #415989 100%);
-  background:-o-linear-gradient(top, #2e466e 5%, #415989 100%);
-  background:-ms-linear-gradient(top, #2e466e 5%, #415989 100%);
-  background:linear-gradient(to bottom, #2e466e 5%, #415989 100%);
-  filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#2e466e', endColorstr='#415989',GradientType=0);
-  background-color:#2e466e;
-  -moz-border-radius:17px;
-  -webkit-border-radius:17px;
-  border-radius:17px;
-  border:1px solid #1f2f47;
-  display:inline-block;
-  cursor:pointer;
-  color:#ffffff;
-  font-family:Arial;
-  font-size:15px;
-  padding:6px 13px;
-  text-decoration:none;
-  text-shadow:0px 1px 0px #263666;
-}
-.myButton:hover {
-  background:-webkit-gradient(linear, left top, left bottom, color-stop(0.05, #415989), color-stop(1, #2e466e));
-  background:-moz-linear-gradient(top, #415989 5%, #2e466e 100%);
-  background:-webkit-linear-gradient(top, #415989 5%, #2e466e 100%);
-  background:-o-linear-gradient(top, #415989 5%, #2e466e 100%);
-  background:-ms-linear-gradient(top, #415989 5%, #2e466e 100%);
-  background:linear-gradient(to bottom, #415989 5%, #2e466e 100%);
-  filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#415989', endColorstr='#2e466e',GradientType=0);
-  background-color:#415989;
 }
